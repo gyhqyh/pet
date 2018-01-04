@@ -12,6 +12,7 @@
           </a>
         </ul>
       </div>
+      <mt-button type="default">点我一下</mt-button>
     </div>
 </template>
 <script>
