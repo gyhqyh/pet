@@ -25,7 +25,7 @@ export default async function ajax(url=' ', data={}, type='GET') {
     promise
       .then( response => {
         let data = response.data
-        console.log(data)
+        // console.log(data)
         resolve(response.data)
       })
       .catch(err => {

@@ -41,7 +41,9 @@
   export default {
     methods: {
       gotoAddress (path) {
-        if (path === '/center') {
+        //这个path 是将要跳转的path
+        if (path === '/center' || path === '/shoppingcart') {
+          //这个path是触发事件之前的path
           let data = this.$route.path
 //          PubSub.publish('back_route', data) todo 被迫妥协了
           this.$store.dispatch('update_center_route',data)

@@ -1,16 +1,19 @@
 <template>
     <div class="wrapper">
       <mt-button  type="default" class="login" >登录/注册</mt-button>
-      <div class="wrapper_svg" @click="back">
+      <!--<div class="wrapper_svg" @click="back">
         <SvgImage className="back"  type="#icon-back" ></SvgImage>
-      </div>
+      </div>-->
+      <Back :back="back"/>
     </div>
 </template>
 <script>
-  import SvgImage from '../../components/svg/svgImage.vue'
   import {mapState} from 'vuex'
+  import Back from '../../components/back/Back.vue'
   export default {
-    components: {SvgImage},
+    components: {
+      Back
+    },
     data () {
       return {
 
@@ -27,15 +30,8 @@
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-.wrapper>.wrapper_svg
-  width 40px
-  height 40px
-  .back
-    position absolute
-    width 20px
-    height 20px
-    padding 10px
-.login
+
+.wrapper>.login
   float right
 
 </style>
