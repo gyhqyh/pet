@@ -8,6 +8,9 @@ import Home from '../pages/home/Home.vue'
 import Classification from '../pages/Classification/Classification.vue'
 import ShoppingCart from '../pages/ShoppingCart/ShoppingCart.vue'
 import Center from '../pages/Center/Center.vue'
+import FenLei from '../pages/FenLei/FenLei.vue'
+import PingPai from '../pages/PingPai/PingPai.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -25,7 +28,27 @@ export default new Router({
       component: Classification,
       meta : {
         isTop: true
-      }
+      },
+      children : [
+        { // 自动跳转路由
+          path: '/classification',
+          redirect: '/classification/feilei'
+        },
+        {
+          path : 'feilei',
+          component:FenLei,
+          meta : {
+            isTop: true
+          }
+        },
+        {
+          path: 'pingpai',
+          component: PingPai,
+          meta : {
+            isTop: true
+          }
+        }
+      ]
     },
     {
       path: '/shoppingcart',
@@ -45,6 +68,7 @@ export default new Router({
       path: '/',
       redirect: '/home'
     }
-  ]
+  ],
+  mode: 'history'
 })
 

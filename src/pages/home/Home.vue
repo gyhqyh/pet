@@ -5,11 +5,18 @@
       </div>
       <div class="header_nav" ref="nav">
         <ul class="nav">
-          <a :href="menu.menu_target || '#'" v-if="home.menus" v-for="(menu, index) in home.menus" :key="index">
+         <!-- <a :href="menu.menu_target || '#'" v-if="home.menus" v-for="(menu, index) in home.menus" :key="index">
             <li class="nav-item" >
+              r
               {{menu.menu_name}}
             </li>
-          </a>
+          </a>-->
+          <li class="nav-item" v-if="home.menus" v-for="(menu, index) in home.menus" :key="index">
+            <router-link to="/classification">
+              {{menu.menu_name}}
+            </router-link>
+
+          </li>
         </ul>
       </div>
       <mt-button type="default">点我一下</mt-button>
