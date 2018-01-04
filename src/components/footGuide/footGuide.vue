@@ -37,10 +37,17 @@
     </div>
 </template>
 <script>
+  import PubSub from 'pubsub-js'
   export default {
     methods: {
       gotoAddress (path) {
+        if (path === '/center') {
+          let data = this.$route.path
+//          PubSub.publish('back_route', data) todo 被迫妥协了
+          this.$store.dispatch('update_center_route',data)
+        }
         this.$router.replace(path)
+
       },
       refreshIndex () {
         if(this.$route.path.indexOf('/home') === -1) {

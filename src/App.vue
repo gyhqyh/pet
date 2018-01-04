@@ -6,9 +6,16 @@
 </template>
 <script>
   import footGuide from './components/footGuide/footGuide.vue'
+//  import PubSub from 'pubsub-js'
   export default {
     components: {
       footGuide
+    },
+    mounted () {
+   /*   PubSub.subscribe('back_route', (msg, data) => {
+        console.log(data, 1223)
+        this.back_route_path = data
+      })*/
     }
   }
 </script>
