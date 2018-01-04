@@ -17,6 +17,7 @@
 <script>
   import axios from 'axios'
   import BScroll from 'better-scroll'
+  import {mapState} from 'vuex'
   export default {
     data () {
       return {
@@ -24,6 +25,18 @@
       }
     },
     mounted () {
+      //axios 自定义发送ajax请求
+      this.$store.dispatch('get_home', {
+        url:'/test/v3/index/main.html',
+        data: {
+          pet_type: 'dog',
+          version : '358',
+          is_single: '0',
+          system: 'wap',
+          isWeb: '1',
+          _: '1514776846871'
+        }
+      })
       let url = '/test/v3/index/main.html?pet_type=dog&version=358&is_single=0&system=wap&isWeb=1&_=1514776846871'
       axios.get(url)
         .then(response => {
@@ -40,7 +53,11 @@
           probeType: 2
         })
       })
+    },
+    computed : {
+      ...mapState(['home'])
     }
+
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
