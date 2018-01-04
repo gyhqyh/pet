@@ -10,7 +10,6 @@ import {
 } from './type'
 export default {
   async get_home ({commit}, data) {
-    debugger
     const result = await get_home(data.url, data.data)
     console.log(result, 'actions')
     commit(GET_HOME, {result})

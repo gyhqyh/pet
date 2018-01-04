@@ -1,7 +1,7 @@
 <template>
     <div>
       <router-view></router-view>
-      <footGuide></footGuide>
+      <footGuide v-if="$route.meta.isTop"></footGuide>
     </div>
 </template>
 <script>

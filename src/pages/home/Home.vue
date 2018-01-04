@@ -5,7 +5,7 @@
       </div>
       <div class="header_nav" ref="nav">
         <ul class="nav">
-          <a :href="menu.menu_target || '#'" v-if="nav_data.menus" v-for="(menu, index) in nav_data.menus" :key="index">
+          <a :href="menu.menu_target || '#'" v-if="home.menus" v-for="(menu, index) in home.menus" :key="index">
             <li class="nav-item" >
               {{menu.menu_name}}
             </li>
@@ -37,6 +37,8 @@
           _: '1514776846871'
         }
       })
+    /*
+      todo 测试的url 现在我已经能用vuex管理数据了
       let url = '/test/v3/index/main.html?pet_type=dog&version=358&is_single=0&system=wap&isWeb=1&_=1514776846871'
       axios.get(url)
         .then(response => {
@@ -45,7 +47,7 @@
         })
         .catch(e => {
           console.log(e)
-        })
+        })*/
       this.$nextTick(() => {
         new BScroll(this.$refs.nav, {
           scrollX: true,

@@ -15,19 +15,31 @@ export default new Router({
     {
       path: '/home',
       component: Home,
+      meta : {
+        isTop : true
+      }
 
     },
     {
       path: '/classification',
-      component: Classification
+      component: Classification,
+      meta : {
+        isTop: true
+      }
     },
     {
       path: '/shoppingcart',
-      component: ShoppingCart
+      component: ShoppingCart,
+      meta : {
+        isTop : false
+      }
     },
     {
       path: '/center',
-      component: Center
+      component: Center,
+      meta : {
+        isTop : false
+      }
     },
     {
       path: '/',
