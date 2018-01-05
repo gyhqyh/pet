@@ -3,5 +3,10 @@
  */
 export default {
   home: {},
-  back_route_path: '/center'
+  back_route_path: '/center',
+  classification : {
+    left : {},
+    right : {}
+  },
+  show_time : {}
 }

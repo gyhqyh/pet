@@ -38,7 +38,8 @@ export default new Router({
           path : 'feilei',
           component:FenLei,
           meta : {
-            isTop: true
+            isTop: true,
+            Height: '0'
           }
         },
         {
