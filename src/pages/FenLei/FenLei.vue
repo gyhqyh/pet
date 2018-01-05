@@ -11,7 +11,9 @@
         </ul>
       </div>
       <div class="wrapper_right" ref="ShowTime">
-        <ShowTime></ShowTime>
+        <div>
+          <ShowTime></ShowTime>
+        </div>
       </div>
     </div>
 </template>
@@ -72,10 +74,10 @@
           click : true,
           probeType: 1
         })
-        /*new BScorll(this.$refs.ShowTime, {
+        new BScorll(this.$refs.ShowTime, {
           click : true,
           probeType: 2
-        })*/
+        })
       })
     },
     methods : {
