@@ -73,7 +73,7 @@ export default new Router({
       path: '/select',
       component: Select,
       meta : {
-        isTop: true,
+        isTop: false,
       }
     }
   ],
