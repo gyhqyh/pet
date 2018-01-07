@@ -14,7 +14,7 @@
       </div>
       <div class="header_search">
         <div class="search_content">
-          <div class="content_right">
+          <div class="content_right" @click="$router.replace('/select')">
             <a href="#">
               <span>狗狗站</span>
               <span>|</span>
@@ -160,6 +160,7 @@
             this.fen--
           }
           this.miao--
+          cha--
         },1000)
       }
     },
@@ -392,6 +393,4 @@
       transform scale(0.9)
     &.mask3
       transform scale(1)
-
-
 </style>

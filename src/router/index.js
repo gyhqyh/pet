@@ -10,6 +10,7 @@ import ShoppingCart from '../pages/ShoppingCart/ShoppingCart.vue'
 import Center from '../pages/Center/Center.vue'
 import FenLei from '../pages/FenLei/FenLei.vue'
 import PingPai from '../pages/PingPai/PingPai.vue'
+import Select from '../pages/Select/select.vue'
 
 Vue.use(Router)
 
@@ -39,7 +40,6 @@ export default new Router({
           component:FenLei,
           meta : {
             isTop: true,
-            Height: '0'
           }
         },
         {
@@ -68,6 +68,13 @@ export default new Router({
     {
       path: '/',
       redirect: '/home'
+    },
+    {
+      path: '/select',
+      component: Select,
+      meta : {
+        isTop: true,
+      }
     }
   ],
   mode: 'history'
