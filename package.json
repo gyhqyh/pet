@@ -15,9 +15,11 @@
   "dependencies": {
     "axios": "^0.17.1",
     "better-scroll": "^1.6.3",
+    "fastclick": "^1.0.6",
     "mint-ui": "^2.2.13",
     "pubsub-js": "^1.5.8",
     "vue": "^2.5.2",
+    "vue-lazyload": "^1.1.4",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },

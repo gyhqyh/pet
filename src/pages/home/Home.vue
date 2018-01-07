@@ -1,5 +1,10 @@
 <template>
   <div>
+    <div class="mask" ref="animate">
+      <span @click="handle_hidd ">
+        点我关闭
+      </span>
+    </div>
     <div class="header" >
       <div class="header_img" v-if="isShow">
         <img src="./jingxi.jpg" alt="" class="image">
@@ -65,12 +70,29 @@
             </li>
           </ul>
         </div>
+        <split/>
+        <div class="xinren">
+          <a href="#">
+            <img src="./xinren.gif" alt="">
+          </a>
+        </div>
+        <div class="juli" v-if="hme_dingshi.data">
+          <span>{{hme_dingshi.data['27'].title}}</span>
+          <span>{{shi}}</span>
+          <span>{{fen}}</span>
+          <span>{{miao}}</span>
+        </div>
         <div class="height1000"></div>
+      </div>
+
+      <div class="animate" @click="toggle_two" v-if="!isShow_two">
+
       </div>
     </div>
   </div>
 </template>
 <script>
+  import img from './xinren.gif'
   import axios from 'axios'
   import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
@@ -80,17 +102,69 @@
       return {
         nav_data: {},
         isShow : true,
-        h : 0
+        h : 0,
+        shi: 0,
+        fen: 0,
+        miao: 0,
+        isShow_two : false
+
       }
     },
     methods : {
+      handle_hidd () {
+        this.$refs.animate.className = 'mask'
+        this.isShow_two = false
+      },
+      toggle_two () {
+        this.isShow_two = !this.isShow_two
+        if (this.isShow_two) {
+          let i = 1
+          let cl = setInterval(() => {
+            console.log(i)
+            this.$refs.animate.className += ' mask' + i
+            if(i == 3){
+              clearInterval(cl)
+            }
+            i++
+            /*关于时间的这里还是可以继续优化的，比如说我让定时器每秒走10ms
+            * if i = 10  表示已经走过了10步 经过了1s
+            * i++
+            *
+            * */
+          },100)
+
+        }
+      },
       toggleShow () {
         this.isShow = !this.isShow
         this.h = document.documentElement.clientHeight - (this.isShow ? 206 : 151)
-        console.log(this.h,999999)
+//        console.log(this.h,999999)
+      },
+      cb () {
+
+        let cha = this.hme_dingshi.data['27'].time - this.hme_dingshi.sys_time
+        this.shi = Math.floor(cha/3600)
+        this.fen = Math.floor(cha%3600/60)
+        this.miao = cha%60
+        console.log(cha ,this.shi, this.fen, this.miao, 'gzj')
+        let time_one = setInterval(() => {
+          if(cha <= 0 ) {
+            clearInterval(time_one)
+          }
+          if (this.miao == 0) {
+            this.miao = 60
+            if (this.fen == 0) {
+              this.shi--
+              this.fen = 60
+            }
+            this.fen--
+          }
+          this.miao--
+        },1000)
       }
     },
     mounted () {
+//      console.log(hme_dingshi.data['27'])
       let {h, isShow} = this
       /*todo 这里的this是真的不好注意的*/
       this.h = document.documentElement.clientHeight - (isShow ? 206 : 151)
@@ -107,6 +181,25 @@
           _: '1514776846871'
         }
       })
+
+      //'http://mall.api.epet.com/v3/index/main.html?
+      // do=GetDynamicV315&pet_type=cat&version=358&system=wap&isWeb=1&_=1515231575438'
+      //todo 办法都是人想出来的
+      let {cb} = this
+      let data2 = {
+        url: '/api/v3/index/main.html',
+        data : {
+          do: 'GetDynamicV315',
+          pet_type: 'cat',
+          version: '358',
+          system: 'wap',
+          isWeb: '1',
+          _: '1515231575438'
+        },
+        cb
+      }
+      this.$store.dispatch('juli', data2)
+
     /*
       todo 测试的url 现在我已经能用vuex管理数据了
       let url = '/test/v3/index/main.html?pet_type=dog&version=358&is_single=0&system=wap&isWeb=1&_=1514776846871'
@@ -125,21 +218,15 @@
           probeType: 2
         })
         new BScroll(this.$refs.home_content, {
-
           click: true,
           probeType: 2
         })
       })
     },
     computed : {
-      ...mapState(['home']),
+      ...mapState(['home','hme_dingshi']),
 
     },
-    watch: {
-      isShow: function (newVal, oldVal) {
-
-      }
-    }
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
@@ -257,7 +344,54 @@
           &>img
             width 100%
             height 100%
+      .xinren
+        width 100%
+        height 120px
+        &>a
+          display block
+          width 100%
+          height 120px
+          & img
+            width 100%
+            height 120px
+      .juli
+
       & .height1000
         height 600px
         width 100%
+  .animate
+    position fixed
+    right: 0
+    bottom 60px
+    background-color yellowgreen
+    width 41px
+    height 46px
+    background-image url('./godog (1).png')
+    background-repeat no-repeat
+    background-size 200% 100%
+    background-position 100%
+    animation :aa 2000ms steps(2) infinite;
+    border-radius 4px
+  @keyframes aa {
+    0%{background-position: 0% 0px}
+    100%{background-position: 203% 0px}
+  }
+  .mask
+    position fixed
+    width 100%
+    height 100%
+    background rgba(100,100,100,0.5)
+    z-index 100
+    transform scale(0)
+    opacity 0
+    transition all 0.1s ease
+    &.mask1
+      opacity 1
+      transform scale(1.1)
+    &.mask2
+      transform scale(0.9)
+    &.mask3
+      transform scale(1)
+
+
 </style>

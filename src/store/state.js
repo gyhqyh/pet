@@ -3,6 +3,7 @@
  */
 export default {
   home: {},
+  hme_dingshi: {},
   back_route_path: '/center',
   classification : {
     left : {},

@@ -17,6 +17,13 @@ module.exports = {
         pathRewrite: {
           '^/test': '/'
         }
+      },
+      '/api': {
+        target: 'http://mall.api.epet.com/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/'
+        }
       }
     },
 

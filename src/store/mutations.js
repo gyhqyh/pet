@@ -5,7 +5,8 @@ import {
   GET_HOME,
   UPDATE_CENTER_ROUTE,
   GET_CLASSIFI,
-  UPDATE
+  UPDATE,
+  JULI
 } from './type'
 export default {
   [GET_HOME] (state,{result}) {
@@ -19,5 +20,9 @@ export default {
   },
   [UPDATE] (state, {result}) {
     state.classification.right = result
+  },
+  [JULI] (state, {result}) {
+    state.hme_dingshi = result
+
   }
 }

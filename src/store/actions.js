@@ -4,14 +4,16 @@
 import {
   get_home,
   get_classifi,
-  update
+  update,
+  juli
 } from '../api/index'
 
 import {
   GET_HOME,
   UPDATE_CENTER_ROUTE,
   GET_CLASSIFI,
-  UPDATE
+  UPDATE,
+  JULI
 } from './type'
 export default {
   async get_home ({commit}, data) {
@@ -29,5 +31,10 @@ export default {
   async update ({commit}, data) {
     const result = await update(data.url, data.data)
     commit(UPDATE, {result})
+  },
+  async juli ({commit}, data) {
+    const result = await juli(data.url, data.data)
+    commit(JULI, {result})
+    data.cb && data.cb()
   }
 }
