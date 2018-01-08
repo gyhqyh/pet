@@ -6,7 +6,11 @@ import {
   UPDATE_CENTER_ROUTE,
   GET_CLASSIFI,
   UPDATE,
-  JULI
+  JULI,
+  GET_CITY,
+  SELECT_CHENG,
+  SELECT_XIAN,
+  SELECT_DI
 } from './type'
 export default {
   [GET_HOME] (state,{result}) {
@@ -23,6 +27,19 @@ export default {
   },
   [JULI] (state, {result}) {
     state.hme_dingshi = result
-
-  }
+  },
+  [GET_CITY] (state, {result}) {
+    state.sanji = result
+  },
+  [SELECT_CHENG] (state, {result}) {
+    state.select_sheng = result
+  },
+  [SELECT_DI] (state, {result}) {
+    state.select_di = result
+    state.select_sheng = ''
+  },
+  [SELECT_XIAN] (state, {result}) {
+    state.select_xian = result
+    state.select_di = ''
+  },
 }

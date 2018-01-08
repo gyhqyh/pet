@@ -16,3 +16,6 @@ export function update(url, data_obj) {
 export function juli(url, data_obj) {
   return ajax(url, data_obj)
 }
+export function  get_city(url) {
+  return ajax(url)
+}

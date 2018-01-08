@@ -9,5 +9,9 @@ export default {
     left : {},
     right : {}
   },
-  show_time : {}
+  show_time : {},
+  sanji : [],
+  select_sheng: '',
+  select_xian: '',
+  select_di: ''
 }

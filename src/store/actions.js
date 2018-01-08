@@ -5,7 +5,8 @@ import {
   get_home,
   get_classifi,
   update,
-  juli
+  juli,
+  get_city
 } from '../api/index'
 
 import {
@@ -13,7 +14,11 @@ import {
   UPDATE_CENTER_ROUTE,
   GET_CLASSIFI,
   UPDATE,
-  JULI
+  JULI,
+  GET_CITY,
+  SELECT_CHENG,
+  SELECT_DI,
+  SELECT_XIAN
 } from './type'
 export default {
   async get_home ({commit}, data) {
@@ -36,5 +41,25 @@ export default {
     const result = await juli(data.url, data.data)
     commit(JULI, {result})
     data.cb && data.cb()
-  }
+  },
+  async get_city ({commit}, data) {
+    const result = await get_city(data.mag)
+    commit(GET_CITY,{result})
+    data.cb && data.cb(1)
+  },
+  select_cheng ({commit}, data) {
+    let result = data.mag
+    commit(SELECT_CHENG, {result})
+    data.cb && data.cb(2)
+  },
+  select_di ({commit}, data) {
+    let result = data.mag
+    commit(SELECT_DI, {result})
+    data.cb && data.cb(3)
+  },
+  select_xian ({commit}, data) {
+    let result = data.mag
+    commit(SELECT_XIAN, {result})
+
+  },
 }

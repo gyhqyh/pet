@@ -4,6 +4,9 @@ import 'mint-ui/lib/style.css'
 import {Button} from 'mint-ui'
 import FastClick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
+import VueScroller from 'vue-scroller'
+
+import './mock/mockServer'
 
 import App from './App.vue'
 import SvgImage from './components/svg/svgImage.vue'
@@ -16,6 +19,7 @@ Vue.use(MintUi)
 Vue.use(VueLazyload, {
   loading
 })
+Vue.use(VueScroller)
 Vue.component(Button.name, Button)
 Vue.component('SvgImage', SvgImage)
 Vue.component('split', split)
